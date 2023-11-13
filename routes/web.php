@@ -33,17 +33,41 @@ use Illuminate\Support\Facades\Route;
 //     return $msg;
 // })->where('name',['MONA','ahm']);
 
-Route::prefix('product')->group(function(){
+Route::prefix('Web structure')->group(function(){
     Route::get('/', function(){
-    return 'home page';
+    return 'About page';
    });
 
-Route::get('camera',function(){
-     return 'camera page';
+Route::get('call',function(){
+     return 'call page';
     });
     
-Route::get('projector',function(){
-     return 'projector page';
- });
+Route::get('Ticket',function(){
+     return 'Ticket page';
+
+Route::get('chat',function(){
+        return 'chat page';
+});
+
+});
+
+});
+Route::prefix('Training')->group(function(){
+    Route::get('/', function(){
+    return 'HR page';
+   });
+
+Route::get('ICT',function(){
+     return 'ICT page';
+    });
+    
+Route::get('Marketing',function(){
+    return 'Marketingr page';
+
+Route::get('Logistics',function(){
+        return 'Logistics page';
+});
+
+});
 
 });
