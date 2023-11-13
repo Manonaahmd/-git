@@ -38,6 +38,16 @@ Route::prefix('Web structure')->group(function(){
     return 'About page';
    });
 
+   Route::prefix('Web structure')->group(function(){
+    Route::get('/', function(){
+    return 'Contact us page';
+   });
+
+   Route::prefix('Web structure')->group(function(){
+    Route::get('/', function(){
+    return 'Support page';
+  });
+
 Route::get('call',function(){
      return 'call page';
     });
@@ -47,7 +57,12 @@ Route::get('Ticket',function(){
 
 Route::get('chat',function(){
         return 'chat page';
-});
+    
+    });
+    
+ });
+    
+});     
 
 });
 
