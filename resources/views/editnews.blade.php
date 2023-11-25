@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Edit a Product</h1>
+    <h1>Edit a newws</h1>
     <div>
         @if($errors->any())
         <ul>
@@ -19,24 +19,24 @@
 
         @endif
     </div>
-    <form method="post" action="{{route('product.update', ['product' => $product])}}">
+    <form method="post" action="{{route('newws.update', ['newws' => $newws])}}">
         @csrf 
         @method('put')
         <div>
             <label>Name</label>
-            <input type="text" name="name" placeholder="Name" value="{{$product->name}}" />
+            <input type="text" name="Title" placeholder="Name" value="{{$newws->Title}}" />
         </div>
         <div>
             <label>Qty</label>
-            <input type="text" name="qty" placeholder="Qty" value="{{$product->qty}}" />
+            <input type="text" name="discription" placeholder="discription" value="{{$newws->discription}}" />
         </div>
         <div>
             <label>Price</label>
-            <input type="text" name="price" placeholder="Price" value="{{$product->price}}" />
+            <input type="text" name="published" placeholder="published" value="{{$newws->published}}" />
         </div>
         <div>
             <label>Description</label>
-            <input type="text" name="description" placeholder="Description" value="{{$product->description}}" />
+            <input type="text" name="author" placeholder="author" value="{{$newws->author}}" />
         </div>
         <div>
             <input type="submit" value="Update" />
