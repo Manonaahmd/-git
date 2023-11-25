@@ -17,30 +17,30 @@
     </div>
     <div>
         <div>
-            <a href="{{route('product.create')}}">Create a Product</a>
+            <a href="{{route('newws.create')}}">Create a newws</a>
         </div>
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th>Description</th>
+                <th>Title</th>
+                <th>discription</th>
+                <th>published</th>
+                <th>author</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             @foreach($products as $product )
                 <tr>
-                    <td>{{$product->id}}</td>
-                    <td>{{$product->name}}</td>
-                    <td>{{$product->qty}}</td>
-                    <td>{{$product->price}}</td>
-                    <td>{{$product->description}}</td>
+                    <td>{{$newws->id}}</td>
+                    <td>{{$newws->Title}}</td>
+                    <td>{{$newws->discription}}</td>
+                    <td>{{$newws->published}}</td>
+                    <td>{{$newws->author}}</td>
                     <td>
-                        <a href="{{route('product.edit', ['product' => $product])}}">Edit</a>
+                        <a href="{{route('newws.edit', ['newws' => $newws])}}">Edit</a>
                     </td>
                     <td>
-                        <form method="post" action="{{route('product.destroy', ['product' => $product])}}">
+                        <form method="post" action="{{route('newws.destroy', ['newws' => $newws])}}">
                             @csrf 
                             @method('delete')
                             <input type="submit" value="Delete" />
