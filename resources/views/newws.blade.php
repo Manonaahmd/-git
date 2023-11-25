@@ -7,44 +7,48 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Create a Product</h1>
+    <h1>Product</h1>
     <div>
-        @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-
-
+        @if(session()->has('success'))
+            <div>
+                {{session('success')}}
+            </div>
         @endif
     </div>
-    <form method="post" action="{{route('newws1')}}">
-        @csrf 
-        @method('post')
+    <div>
         <div>
-            <label>itle</label>
-            <input type="text" name="itle" placeholder="itle" />
+            <a href="{{route('product.create')}}">Create a Product</a>
         </div>
-        <div>
-            <label>description</label>
-            <input type="text" name="description" placeholder="description" />
-        </div>
-        <div>
-            <label>published</label>
-            <input type="text" name="published" placeholder="published" />
-        </div>
-        <div>
-            <label>author</label>
-            <input type="text" name="author" placeholder="author" />
-        </div>
-        <div>
-            <label>notes</label>
-            <input type="text" name="notes" placeholder="notes" />
-        </div>
-        <div>
-            <input type="submit" value="Save a Newws" />
-        </div>
-    </form>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            @foreach($products as $product )
+                <tr>
+                    <td>{{$product->id}}</td>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->qty}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->description}}</td>
+                    <td>
+                        <a href="{{route('product.edit', ['product' => $product])}}">Edit</a>
+                    </td>
+                    <td>
+                        <form method="post" action="{{route('product.destroy', ['product' => $product])}}">
+                            @csrf 
+                            @method('delete')
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 </body>
 </html>
