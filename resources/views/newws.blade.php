@@ -27,9 +27,10 @@
                 <th>published</th>
                 <th>author</th>
                 <th>Edit</th>
+                <th>Show</th>
                 <th>Delete</th>
             </tr>
-            @foreach($products as $product )
+            @foreach($newws as $newws )
                 <tr>
                     <td>{{$newws->id}}</td>
                     <td>{{$newws->Title}}</td>
@@ -37,8 +38,18 @@
                     <td>{{$newws->published}}</td>
                     <td>{{$newws->author}}</td>
                     <td>
-                        <a href="{{route('newws.edit', ['newws' => $newws])}}">Edit</a>
+                       @if($newws->published)
+                     Yes
+                    @else
+                       No
+                     @endif
                     </td>
+                    <td>
+                        <a href="newwsDeails/{{ $newws->id }}">Show</a></td>
+
+                     <td><a href="{{route('newws.edit', ['newws' => $newws])}}">Edit</a>
+                    </td>
+
                     <td>
                         <form method="post" action="{{route('newws.destroy', ['newws' => $newws])}}">
                             @csrf 
