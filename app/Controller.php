@@ -8,7 +8,5 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    Public function test1(){
-    return view("login");
-}
+    use AuthorizesRequests, ValidatesRequests;
 }
