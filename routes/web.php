@@ -1,10 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostsController;
-use App\Http\Controllers\NewwsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,10 +77,25 @@ Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
 
 Route::get('addCar',[CarController::class, 'create']);
 
+Route::get('trashed',[CarController::class, 'trashed']);
+Route::get('restoreCar/{id}',[CarController::class, 'restore']);
+
 Route::get('cars', [CarController::class, 'index']);
-Route::get('/newws', [NewwsController::class, 'index'])->name('newws.index');
-Route::get('/newws/create', [NewwsController::class, 'create'])->name('newws.create');
-Route::post('/newws', [NewwsController::class, 'store'])->name('newws.store');
-Route::get('/newws/{newws}/edit', [NewwsController::class, 'edit'])->name('newws.edit');
-Route::put('/newws/{newws}/update', [NewwsController::class, 'update'])->name('newws.update');
-Route::delete('/newws/{newws}/destroy', [NewwsController::class, 'destroy'])->name('newws.destroy');
+
+Route::get('editCar/{id}', [CarController::class, 'edit']);
+
+Route::get('deleteCar/{id}', [CarController::class, 'destroy']);
+
+Route::get('carDetails/{id}', [CarController::class, 'show'])->name('carDetails');
+
+Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
+Route::get('cars', [CarController::class, 'index']);
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');('product.destroy');
+Route::get('product/{id}', [ProductController::class, 'show'])->name('product');
+Route::get('trashed',[ProductController::class, 'trashed']);
+Route::get('restoreproduct/{id}',[ProductController::class, 'restore']);
