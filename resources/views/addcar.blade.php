@@ -33,19 +33,18 @@
             @error('description')
                 {{ $message }}
             @enderror
-        </div>
-        <div class="form-group">
-            <label for="image">Image:</label>
-            <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}">
-            <div class="form-group">
-  <label class="col-md-4 control-label" >Image</label>
-  <div class="col-md-5 inputGroupContainer">  
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-  <div class="upload-btn-wrapper">
-  <button class="btn">Upload a New Image</button>
-  <input type="file" name="pro_pic" />
-  </div>   
+            <div id="image" class="row" style="display: none;">
+                        <div class="col-md-12">
+                            <label for="text">Project Image</label>
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="project_image"
+                                value="{{ old('project_image',$currentProject->project_image) }}">
+                                @if ($errors->has('description'))
+                                <div class="text-danger">{{ $errors->first('description') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>     
   </div>
   </div>
   </div>
