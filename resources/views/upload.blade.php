@@ -31,7 +31,7 @@
                         <div class="col-md-12">
                             <label for="text">Project Image</label>
                             <div class="form-group">
-                                <input type="file" class="form-control" name="description"
+                                <input type="file" class="form-control" name="image"
                                 value="{{ old('description',$currentProject->description) }}">
                                 @if ($errors->has('description'))
                                 <div class="text-danger">{{ $errors->first('description') }}</div>
