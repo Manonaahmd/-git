@@ -12,7 +12,7 @@
 
 <div class="container">
     <h2>Add Car</h2>
-    <form action="{{route('storeCar')}}" method="post">
+    <form action="{{route('storeCar')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Title:</label>
@@ -31,6 +31,33 @@
             <label for="description">Description:</label>
             <textarea class="form-control" rows="5" id="description" name="description">{{ old('description') }}</textarea>
             @error('description')
+                {{ $message }}
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}">
+            <div class="form-group">
+  <label class="col-md-4 control-label" >Image</label>
+  <div class="col-md-5 inputGroupContainer">  
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+  <div class="upload-btn-wrapper">
+  <button class="btn">Upload a New Image</button>
+  <input type="file" name="pro_pic" />
+  </div>   
+  </div>
+  </div>
+  </div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Current Image </label>
+    <div class="col-md-5 inputGroupContainer">
+    <img src="{{ URL::to($StudentData->pro_pic)}}" height="150px" width="190px">
+    <input type="hidden" name="Prev_pic" value="{{$StudentData->pro_pic}}">
+    </div>
+</div>
+            @error('image')
                 {{ $message }}
             @enderror
         </div>
