@@ -1,9 +1,11 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\AjaxUploadMultipleImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,10 @@ Route::post('receive',[ExampleController::class, 'received'])->name('receive');
 
 Route::get('test1',[ExampleController::class, 'test1']);
 
+Route::get('showUpload',[ExampleController::class, 'showUpload']);
+
+Route::post('upload',[ExampleController::class, 'upload'])->name('upload');
+
 Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
 
 Route::get('addCar',[CarController::class, 'create']);
@@ -89,7 +95,6 @@ Route::get('deleteCar/{id}', [CarController::class, 'destroy']);
 Route::get('carDetails/{id}', [CarController::class, 'show'])->name('carDetails');
 
 Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
-Route::get('cars', [CarController::class, 'index']);
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
@@ -99,3 +104,5 @@ Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'
 Route::get('product/{id}', [ProductController::class, 'show'])->name('product');
 Route::get('trashed',[ProductController::class, 'trashed']);
 Route::get('restoreproduct/{id}',[ProductController::class, 'restore']);
+Route::get('multiple-image-preview', [AjaxUploadMultipleImageController::class, 'index']);
+Route::post('upload-multiple-image-ajax', [AjaxUploadMultipleImageController::class, 'saveUpload']);
